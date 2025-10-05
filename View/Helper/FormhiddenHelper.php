@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Formhidden Helper: create html hidden tags.
  *
@@ -16,61 +15,62 @@
  *
  *
  * =====Usage=====
- * //in controller
- *   var $helpers = array('Cakeplus.Formhidden');
+ * // in controller
+ * public $helpers = ['Cakeplus.Formhidden'];
  *
- * //in view(ctp file) for using $this->data
- *   <?php echo $formhidden->hiddenVars(); ?>
+ * // in view(ctp file) for using $this->data
+ * <?php echo $formhidden->hiddenVars(); ?>
  *
- * //in view(ctp file) for using  $data_arr parameter
- *   <?php echo $formhidden->hiddenVars($data_arr); ?>
- *
+ * // in view(ctp file) for using  $data_arr parameter
+ * <?php echo $formhidden->hiddenVars($data_arr); ?>
  * ===============
- *
  */
-class FormhiddenHelper extends Helper {
-    var $helpers = array('Form');
+class FormhiddenHelper extends Helper
+{
+    public $helpers = ['Form'];
 
     // String data of Hidden tags.
-    var $hidden_output = null;
-
+    public string $hidden_output = '';
 
     /**
      * construct html hidden tag
      *
-     * @param array $data_arr //if not set, using $this->data
-     * @return String
+     * @param array $data_arr // if not set, using $this->data
+     * @return string|null
      */
-    function hiddenVars( $data_arr = null ) {
+    public function hiddenVars($data_arr = null)
+    {
         $data = $this->request->data;
 
-        if( empty($data) && empty($data_arr) ){ return; }
-        if( !is_array($data_arr) || empty($data_arr) ){
+        if (empty($data) && empty($data_arr)) {
+            return null;
+        }
+        if (!is_array($data_arr) || empty($data_arr)) {
             $data_arr = $data;
         }
 
-        $this->_createHidden( $data_arr );
+        $this->_createHidden($data_arr);
 
         $output = $this->hidden_output;
-        $this->hidden_output = null;
+        $this->hidden_output = '';
+
         return $output;
     }
 
-
-    function _createHidden( $data, $parent_key = null ){
-        if( is_array( $data ) ){
-
-            foreach( $data as $key => $val ){
-                $parent_key_arr = ( isset($parent_key) ) ? $parent_key . '.' . $key : $key ;
-                self::_createHidden( $val, $parent_key_arr );
+    /**
+     * @param array|string $data
+     * @param string|null $parent_key
+     * @return void
+     */
+    private function _createHidden(array|string $data, ?string $parent_key = null): void
+    {
+        if (is_array($data)) {
+            foreach ($data as $key => $val) {
+                $parent_key_arr = isset($parent_key) ? $parent_key . '.' . $key : $key;
+                $this->_createHidden($val, $parent_key_arr);
             }
-
-        }else{
-            $this->hidden_output .= $this->Form->hidden( $parent_key )."\n";
-
+        } else {
+            $this->hidden_output .= $this->Form->hidden($parent_key) . "\n";
         }
-
     }
-
-
 }

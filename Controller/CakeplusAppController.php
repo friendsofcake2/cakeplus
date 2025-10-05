@@ -1,8 +1,5 @@
 <?php
 
-
-class CakeplusAppController extends AppController {
-
+class CakeplusAppController extends AppController
+{
 }
-
-?>

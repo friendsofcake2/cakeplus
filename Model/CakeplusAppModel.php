@@ -1,9 +1,5 @@
 <?php
 
-class CakeplusAppModel extends AppModel {
-
-
-
+class CakeplusAppModel extends AppModel
+{
 }
-
-?>
