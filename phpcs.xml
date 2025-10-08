@@ -9,7 +9,7 @@
 
     <file>./Controller</file>
     <file>./Model</file>
-    <file>./Test</file>
+    <file>./tests</file>
     <file>./View</file>
 
     <rule ref="CakePHP">
@@ -60,12 +60,12 @@
     </rule>
 
     <rule ref="CakePHP.Commenting.FunctionComment.Missing">
-        <exclude-pattern>Test/Case/*</exclude-pattern>
+        <exclude-pattern>tests/TestCase/*</exclude-pattern>
     </rule>
 
     <!-- Allow multiple classes in test files only (CakePHP2 test pattern) -->
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
-        <exclude-pattern>Test/Case/*</exclude-pattern>
+        <exclude-pattern>tests/TestCase/*</exclude-pattern>
     </rule>
 
     <!-- Allow non-camelCase method names in Controllers (CakePHP2 action naming convention) -->
@@ -75,8 +75,8 @@
         <exclude-pattern>Model/Behavior/*</exclude-pattern>
     </rule>
 
-    <!-- Require return type hints for Test/Case only -->
+    <!-- Require return type hints for tests/TestCase only -->
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint">
-        <include-pattern>Test/Case/*</include-pattern>
+        <include-pattern>tests/TestCase/*</include-pattern>
     </rule>
 </ruleset>

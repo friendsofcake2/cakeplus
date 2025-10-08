@@ -2,18 +2,18 @@
     "name": "pieceofcake2/cakeplus",
     "description": "Cake plus is cakephp plugin and provides some functions for CakePHP.",
     "type": "cakephp-plugin",
-    "keywords": ["cakephp", "validation"],
+    "keywords": ["cakephp", "cakephp2", "validation"],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
+        "php": ">=8.0",
         "composer/installers": "*",
-        "pieceofcake2/cakephp": "^2.10"
+        "pieceofcake2/cakephp": "^2.11"
     },
     "require-dev": {
         "cakephp/cakephp-codesniffer": "^5.0",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^9.6",
-        "pieceofcake2/app": "^2.1",
+        "pieceofcake2/app": "^2.2",
         "pieceofcake2/phpstan-cakephp2": "^0.2.1"
     },
     "replace": {
